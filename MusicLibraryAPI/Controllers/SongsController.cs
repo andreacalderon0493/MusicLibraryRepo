@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MusicLibraryAPI.Data;
 using MusicLibraryAPI.Models;
+using NuGet.Protocol.Core.Types;
 
 namespace MusicLibraryAPI.Controllers
 {
@@ -86,6 +87,24 @@ namespace MusicLibraryAPI.Controllers
             _context.Songs.Remove(song);
             _context.SaveChanges();
             return NoContent();
+        }
+        [HttpPost("Like/{id}")]
+        public IActionResult LikeSong(int id)
+        {
+            var song = _context.Songs.Find(id);
+
+            if (song == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                // Increment the likes and save to the database
+                song.Like++;
+                _context.Songs.Update(song);
+                _context.SaveChanges();
+                return Ok(song);
+            }
         }
     }
 }
