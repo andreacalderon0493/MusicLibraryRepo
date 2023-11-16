@@ -1,0 +1,115 @@
+{
+	"info": {
+		"_postman_id": "9ad55b33-8145-4c24-a4a8-6edd504a0736",
+		"name": "ASPNET_Songs_WebAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31184658"
+	},
+	"item": [
+		{
+			"name": "Get All",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Get by ID",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Title\": \"Creep\",\n    \"Artist\": \"Radiohead\",\n    \"Album\": \"Pablo Honey\",\n    \"ReleaseDate\": \"1992-09-21\",\n    \"Genre\": \"Alternative Rock\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7257/api/Songs/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7257",
+					"path": [
+						"api",
+						"Songs",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Title\": \"Rocket Man\",\n    \"Artist\": \"Elton John\",\n    \"Album\": \"Honky Château\",\n    \"ReleaseDate\": \"1972-01-16\",\n    \"Genre\": \"Psychedelic pop\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7257/api/Songs",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7257",
+					"path": [
+						"api",
+						"Songs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Title\": \"Rocket Man\",\n    \"Artist\": \"Elton John\",\n    \"Album\": \"Honky Château\",\n    \"ReleaseDate\": \"1972-01-16\",\n    \"Genre\": \"Psychedelic pop\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7257/api/Songs/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7257",
+					"path": [
+						"api",
+						"Songs",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
