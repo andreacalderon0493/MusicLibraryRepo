@@ -51,14 +51,41 @@ namespace MusicLibraryAPI.Controllers
 
         // PUT: api/Songs/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(int id, [FromBody] Song song)
         {
+            var updatedSong = _context.Songs.Find(id);
+          
+            if (updatedSong == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                updatedSong.Title = song.Title;
+                updatedSong.Artist = song.Artist;
+                updatedSong.ReleaseDate = song.ReleaseDate;
+                updatedSong.Genre = song.Genre;
+                _context.Songs.Update(updatedSong);
+                _context.SaveChanges();
+                return Ok(updatedSong);
+            }
+
+            //var otherVersionSong = _context.Songs.Where(s => s.Id == id).FirstOrDefault();
+
         }
 
         // DELETE: api/Songs/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            var song = _context.Songs.Find(id);
+            if (song == null)
+            {
+                return NotFound();
+            }
+            _context.Songs.Remove(song);
+            _context.SaveChanges();
+            return NoContent();
         }
     }
 }
