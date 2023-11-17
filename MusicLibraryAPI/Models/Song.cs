@@ -14,10 +14,6 @@ namespace MusicLibraryAPI.Models
         public string Genre { get; set; }
         public int Like { get; set; }
 
-        public Song()
-		{
-           
-		}
 	}
 }
 

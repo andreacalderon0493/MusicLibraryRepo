@@ -88,7 +88,7 @@ namespace MusicLibraryAPI.Controllers
             _context.SaveChanges();
             return NoContent();
         }
-        [HttpPost("Like/{id}")]
+        [HttpPatch("Like/{id}")]
         public IActionResult LikeSong(int id)
         {
             var song = _context.Songs.Find(id);
