@@ -64,6 +64,7 @@ namespace MusicLibraryAPI.Controllers
             {
                 updatedSong.Title = song.Title;
                 updatedSong.Artist = song.Artist;
+                updatedSong.Album = song.Album;
                 updatedSong.ReleaseDate = song.ReleaseDate;
                 updatedSong.Genre = song.Genre;
                 _context.Songs.Update(updatedSong);
@@ -106,5 +107,49 @@ namespace MusicLibraryAPI.Controllers
                 return Ok(song);
             }
         }
+        [HttpPatch("{id}")]
+        public IActionResult UpdateSong(int id, [FromBody] SongUpdateDTO songUpdateDTO)
+        {
+            var song = _context.Songs.Find(id);
+
+            if (song == null)
+            {
+                return NotFound();
+            }
+
+            // Update only the properties that are provided in the DTO
+            if (songUpdateDTO.Title != null)
+            {
+                song.Title = songUpdateDTO.Title;
+            }
+
+            if (songUpdateDTO.Artist != null)
+            {
+                song.Artist = songUpdateDTO.Artist;
+            }
+            if (songUpdateDTO.Genre != null)
+            {
+                song.Genre = songUpdateDTO.Genre;
+            }
+            if (songUpdateDTO.ReleaseDate != null)
+            {
+                song.ReleaseDate = (DateTime)songUpdateDTO.ReleaseDate;
+            }
+            if (songUpdateDTO.Album != null)
+            {
+                song.Album = songUpdateDTO.Album;
+            }
+            if (songUpdateDTO.Like != null)
+            {
+                song.Like = (int)songUpdateDTO.Like;
+            }
+            // Update any other properties here...
+
+            _context.Songs.Update(song);
+            _context.SaveChanges();
+
+            return Ok(song);
+        }
+
     }
 }
