@@ -43,7 +43,7 @@ namespace MusicLibraryAPI.Migrations
                     ReleaseDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     Genre = table.Column<string>(type: "longtext", nullable: false),
                     Like = table.Column<int>(type: "int", nullable: false),
-                    PlaylistId = table.Column<int>(type: "int", nullable: false)
+                    PlaylistId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -52,8 +52,7 @@ namespace MusicLibraryAPI.Migrations
                         name: "FK_Songs_Playlists_PlaylistId",
                         column: x => x.PlaylistId,
                         principalTable: "Playlists",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
 
@@ -71,16 +70,16 @@ namespace MusicLibraryAPI.Migrations
                 columns: new[] { "Id", "Album", "Artist", "Genre", "Like", "PlaylistId", "ReleaseDate", "Title" },
                 values: new object[,]
                 {
-                    { 1, "Un Verano Sin ti", "Bad Bunny", "Reggaeton", 0, 0, new DateTime(2019, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "Callaita" },
-                    { 2, "Un Verano Sin ti", "Bad Bunny", "Reggeaton", 0, 0, new DateTime(2019, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "Moscow Mule" },
-                    { 3, "Un Verano Sin ti", "Bad Bunny", "Reggeaton", 0, 0, new DateTime(2019, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "Titi Me Pregunto" },
-                    { 4, "Un Verano Sin ti", "Bad Bunny", "Reggeaton", 0, 0, new DateTime(2019, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "Después de la Playa" },
-                    { 5, "Un Verano Sin ti", "Bad Bunny", "Reggeaton", 0, 0, new DateTime(2019, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "Me Porto Bonito" },
-                    { 6, "Un Verano Sin ti", "Bad Bunny", "Reggeaton", 0, 0, new DateTime(2019, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "Party" },
-                    { 7, "Un Verano Sin ti", "Bad Bunny", "Reggeaton", 0, 0, new DateTime(2019, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "Neverita" },
-                    { 8, "Un Verano Sin ti", "Bad Bunny", "Reggeaton", 0, 0, new DateTime(2019, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "El Apagón" },
-                    { 9, "Un Verano Sin ti", "Bad Bunny", "Reggeaton", 0, 0, new DateTime(2019, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "Andrea" },
-                    { 10, "Un Verano Sin ti", "Bad Bunny", "Reggeaton", 0, 0, new DateTime(2019, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "Me Fui de Vacaciones" }
+                    { 1, "Un Verano Sin ti", "Bad Bunny", "Reggaeton", 0, null, new DateTime(2019, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "Callaita" },
+                    { 2, "Un Verano Sin ti", "Bad Bunny", "Reggeaton", 0, null, new DateTime(2019, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "Moscow Mule" },
+                    { 3, "Un Verano Sin ti", "Bad Bunny", "Reggeaton", 0, null, new DateTime(2019, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "Titi Me Pregunto" },
+                    { 4, "Un Verano Sin ti", "Bad Bunny", "Reggeaton", 0, null, new DateTime(2019, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "Después de la Playa" },
+                    { 5, "Un Verano Sin ti", "Bad Bunny", "Reggeaton", 0, null, new DateTime(2019, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "Me Porto Bonito" },
+                    { 6, "Un Verano Sin ti", "Bad Bunny", "Reggeaton", 0, null, new DateTime(2019, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "Party" },
+                    { 7, "Un Verano Sin ti", "Bad Bunny", "Reggeaton", 0, null, new DateTime(2019, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "Neverita" },
+                    { 8, "Un Verano Sin ti", "Bad Bunny", "Reggeaton", 0, null, new DateTime(2019, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "El Apagón" },
+                    { 9, "Un Verano Sin ti", "Bad Bunny", "Reggeaton", 0, null, new DateTime(2019, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "Andrea" },
+                    { 10, "Un Verano Sin ti", "Bad Bunny", "Reggeaton", 0, null, new DateTime(2019, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "Me Fui de Vacaciones" }
                 });
 
             migrationBuilder.CreateIndex(

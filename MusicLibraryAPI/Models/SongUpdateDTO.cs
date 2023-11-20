@@ -9,6 +9,7 @@ namespace MusicLibraryAPI.Models
         public DateTime? ReleaseDate { get; set; }
         public string? Genre { get; set; }
         public int? Like { get; set; }
+        
     }
 }
 

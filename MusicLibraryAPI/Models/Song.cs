@@ -18,7 +18,7 @@ namespace MusicLibraryAPI.Models
 
         //Foreign
         [ForeignKey("Playlist")]
-        public int PlaylistId { get; set; }
+        public int? PlaylistId { get; set; }
         //Navigation prop for the one-to-many relationship
         public Playlist playlist { get; set; }
     }

@@ -67,7 +67,7 @@ namespace MusicLibraryAPI.Migrations
                     b.Property<int>("Like")
                         .HasColumnType("int");
 
-                    b.Property<int>("PlaylistId")
+                    b.Property<int?>("PlaylistId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("ReleaseDate")
@@ -91,7 +91,6 @@ namespace MusicLibraryAPI.Migrations
                             Artist = "Bad Bunny",
                             Genre = "Reggaeton",
                             Like = 0,
-                            PlaylistId = 0,
                             ReleaseDate = new DateTime(2019, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Callaita"
                         },
@@ -102,7 +101,6 @@ namespace MusicLibraryAPI.Migrations
                             Artist = "Bad Bunny",
                             Genre = "Reggeaton",
                             Like = 0,
-                            PlaylistId = 0,
                             ReleaseDate = new DateTime(2019, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Moscow Mule"
                         },
@@ -113,7 +111,6 @@ namespace MusicLibraryAPI.Migrations
                             Artist = "Bad Bunny",
                             Genre = "Reggeaton",
                             Like = 0,
-                            PlaylistId = 0,
                             ReleaseDate = new DateTime(2019, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Titi Me Pregunto"
                         },
@@ -124,7 +121,6 @@ namespace MusicLibraryAPI.Migrations
                             Artist = "Bad Bunny",
                             Genre = "Reggeaton",
                             Like = 0,
-                            PlaylistId = 0,
                             ReleaseDate = new DateTime(2019, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Después de la Playa"
                         },
@@ -135,7 +131,6 @@ namespace MusicLibraryAPI.Migrations
                             Artist = "Bad Bunny",
                             Genre = "Reggeaton",
                             Like = 0,
-                            PlaylistId = 0,
                             ReleaseDate = new DateTime(2019, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Me Porto Bonito"
                         },
@@ -146,7 +141,6 @@ namespace MusicLibraryAPI.Migrations
                             Artist = "Bad Bunny",
                             Genre = "Reggeaton",
                             Like = 0,
-                            PlaylistId = 0,
                             ReleaseDate = new DateTime(2019, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Party"
                         },
@@ -157,7 +151,6 @@ namespace MusicLibraryAPI.Migrations
                             Artist = "Bad Bunny",
                             Genre = "Reggeaton",
                             Like = 0,
-                            PlaylistId = 0,
                             ReleaseDate = new DateTime(2019, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Neverita"
                         },
@@ -168,7 +161,6 @@ namespace MusicLibraryAPI.Migrations
                             Artist = "Bad Bunny",
                             Genre = "Reggeaton",
                             Like = 0,
-                            PlaylistId = 0,
                             ReleaseDate = new DateTime(2019, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "El Apagón"
                         },
@@ -179,7 +171,6 @@ namespace MusicLibraryAPI.Migrations
                             Artist = "Bad Bunny",
                             Genre = "Reggeaton",
                             Like = 0,
-                            PlaylistId = 0,
                             ReleaseDate = new DateTime(2019, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Andrea"
                         },
@@ -190,7 +181,6 @@ namespace MusicLibraryAPI.Migrations
                             Artist = "Bad Bunny",
                             Genre = "Reggeaton",
                             Like = 0,
-                            PlaylistId = 0,
                             ReleaseDate = new DateTime(2019, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Me Fui de Vacaciones"
                         });
@@ -199,17 +189,15 @@ namespace MusicLibraryAPI.Migrations
             modelBuilder.Entity("MusicLibraryAPI.Models.Song", b =>
                 {
                     b.HasOne("MusicLibraryAPI.Models.Playlist", "playlist")
-                        .WithMany("songs")
-                        .HasForeignKey("PlaylistId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("Songs")
+                        .HasForeignKey("PlaylistId");
 
                     b.Navigation("playlist");
                 });
 
             modelBuilder.Entity("MusicLibraryAPI.Models.Playlist", b =>
                 {
-                    b.Navigation("songs");
+                    b.Navigation("Songs");
                 });
 #pragma warning restore 612, 618
         }

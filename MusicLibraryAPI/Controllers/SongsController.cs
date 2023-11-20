@@ -151,21 +151,24 @@ namespace MusicLibraryAPI.Controllers
             return Ok(song);
         }
         // SongsController.cs
-        [HttpPost("add-to-playlist/{playlistId}")]
-        public IActionResult AddSongToPlaylist(int playlistId, [FromBody] Song song)
+        [HttpPatch("add-to-playlist/{songId}")]
+        public IActionResult AddPlaylistToSong(int songId, [FromBody] PlaylistUpdateDTO playlistDto)
         {
-            var playlist = _context.Playlists.Find(playlistId);
+            var song = _context.Songs.Find(songId);
 
-            if (playlist == null)
+            if (song == null)
             {
-                return NotFound("Playlist not found.");
+                return NotFound("Song not found.");
             }
 
-            song.PlaylistId = playlistId;
-            _context.Songs.Add(song);
+            song.PlaylistId = playlistDto.playlistId;
 
-            return Ok("Song added to playlist successfully.");
+            _context.Update(song);
+            _context.SaveChanges();
+
+            return Ok("Playlist added to song successfully.");
         }
+
 
 
     }

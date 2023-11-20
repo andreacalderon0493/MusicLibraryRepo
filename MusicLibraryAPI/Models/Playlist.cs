@@ -10,7 +10,7 @@ namespace MusicLibraryAPI.Models
 		public string Name { get; set; }
 
 		//Navigation property for the one-to-many relationships
-		public List<Song> songs { get; set; }
+		public ICollection <Song> Songs { get; set; }
 	}
    
 }
