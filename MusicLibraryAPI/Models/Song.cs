@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MusicLibraryAPI.Models
 {
@@ -15,6 +16,12 @@ namespace MusicLibraryAPI.Models
         public string Genre { get; set; }
         public int Like { get; set; }
 
-	}
+        //Foreign
+        [ForeignKey("Playlist")]
+        public int PlaylistId { get; set; }
+        //Navigation prop for the one-to-many relationship
+        public Playlist playlist { get; set; }
+    }
+    
 }
 

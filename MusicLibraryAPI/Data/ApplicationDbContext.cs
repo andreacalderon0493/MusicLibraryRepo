@@ -8,7 +8,7 @@ namespace MusicLibraryAPI.Data
 	public class ApplicationDbContext : DbContext
 	{
 		public DbSet<Song> Songs { get; set; }
-
+        public DbSet<Playlist> Playlists { get; set; }
 		public ApplicationDbContext(DbContextOptions options) : base(options)
 		{
 		}
@@ -96,23 +96,37 @@ namespace MusicLibraryAPI.Data
 
                    },
                    new Song
-                    {
-                        Id = 9,
-                        Title = "Andrea",
-                        Artist = "Bad Bunny",
-                        Album = "Un Verano Sin ti",
-                        ReleaseDate = new DateTime(2019, 05, 31),
-                        Genre = "Reggeaton"
+                   {
+                       Id = 9,
+                       Title = "Andrea",
+                       Artist = "Bad Bunny",
+                       Album = "Un Verano Sin ti",
+                       ReleaseDate = new DateTime(2019, 05, 31),
+                       Genre = "Reggeaton"
 
                    },
                    new Song
                    {
-                      Id = 10,
-                      Title = "Me Fui de Vacaciones",
-                      Artist = "Bad Bunny",
-                      Album = "Un Verano Sin ti",
-                      ReleaseDate = new DateTime(2019, 05, 31),
-                      Genre = "Reggeaton"
+                       Id = 10,
+                       Title = "Me Fui de Vacaciones",
+                       Artist = "Bad Bunny",
+                       Album = "Un Verano Sin ti",
+                       ReleaseDate = new DateTime(2019, 05, 31),
+                       Genre = "Reggeaton"
+
+                   }
+                   );
+
+                   modelBuilder.Entity<Playlist>().HasData(
+                   new Playlist
+                   {
+                       Id = 1,
+                       Name = "Favorite Songs"
+                   },
+                   new Playlist
+                   {
+                       Id = 2,
+                       Name = "Dancing Music"
 
                    }
                 );
